@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{forest}
+
+% Define a global style for all forest trees
+\forestset{
+  my style/.style={
+    circle,
+    draw,
+    minimum size=0.1pt, % Smaller size using pt
+    s sep=0.1pt,      % Sibling separation in points
+    l sep=0.0001pt,      % Level separation in points
+    inner sep=0.1pt,  % Inner separation in points
+    edge path={
+      \noexpand\path[\forestoption{edge}, shorten >=0.5pt, shorten <=0.5pt] (!u.parent anchor) -- ++(0,-2pt) -| (.child anchor)\forestoption{edge label};
+    },
+  }
+}
+
+\begin{document}
+
+\begin{forest}
+  my style
+  [Root
+    [Node 1
+      [Leaf 1]
+      [Leaf 2]
+    ]
+    [Node 2
+      [Leaf 3]
+      [Leaf 4]
+    ]
+  ]
+\end{forest}
+
+\end{document}
